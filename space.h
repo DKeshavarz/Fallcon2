@@ -16,7 +16,9 @@ class Space{
 
     private:
         std::vector<std::vector<Obstacle*>> map;
+
         std::vector<Spacecraft> spacecrafts;
+        int spacecraftIndex {};
 
 };
 

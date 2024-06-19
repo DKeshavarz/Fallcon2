@@ -6,6 +6,8 @@
 class Spacecraft{
     public:
         Spacecraft();
+
+        Point getPoint();
     private:
         Point location;
 

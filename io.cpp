@@ -34,3 +34,6 @@ char Io::input(){
   
     return input; 
 }
+void Io::clear(){
+    system("CLS || clear");
+}
