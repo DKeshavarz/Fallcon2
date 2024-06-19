@@ -2,6 +2,7 @@
 #define CONTROL_H
 
 #include "space.h"
+#include "io.h"
 
 class Control{
     public:
@@ -9,6 +10,7 @@ class Control{
 
     private:
         Space space;
+        Io ioHandeler;
 };
 
 #endif //CONTROL_H
