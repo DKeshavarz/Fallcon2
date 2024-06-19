@@ -1,12 +1,14 @@
 #ifndef CONTROL_H
 #define CONTROL_H
 
+#include "space.h"
+
 class Control{
     public:
         Control();
-        
-    private:
 
+    private:
+        Space space;
 };
 
-#endif
+#endif //CONTROL_H
