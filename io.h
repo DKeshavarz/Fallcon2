@@ -8,6 +8,7 @@ class Io {
         Io();
 
         void output(const std::string&);
+        char input();
 
 
     private:

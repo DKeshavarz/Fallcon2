@@ -12,7 +12,7 @@ class Control{
 
     private:
         Space space;
-        Io ioHandeler;
+        Io io;
 };
 
 #endif //CONTROL_H

@@ -9,7 +9,12 @@ Control::Control(){
 }
 int Control::run(){
     
-    this->ioHandeler.output(this->space.showMap());
+    char ch;
+
+    do{
+        ch = this->io.input();
+
+    }while(ch != 'q');
 
     return 0;
 }
