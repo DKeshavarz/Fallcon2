@@ -1,11 +1,12 @@
 #include "space.h"
 
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
 Space::Space() :
-map(1,vector<Obstacle*> (1,nullptr)){
+map(2,vector<Obstacle*> (5,nullptr)){
     
 }
 Space::~Space(){
@@ -18,4 +19,18 @@ Space::~Space(){
         }
     }
                 
+}
+
+string Space::showMap(){
+    ostringstream out;
+    for(int i {} ; i < this->map.size() ; ++i){
+        out << '|';
+        for(int j {} ; j < this->map.at(i).size() ; ++j){
+            if(map.at(i).at(j) == nullptr){
+                out << ' ';
+            }
+        }
+        out << "|\n";
+    }
+    return out.str();
 }

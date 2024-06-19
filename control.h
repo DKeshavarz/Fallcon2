@@ -8,6 +8,8 @@ class Control{
     public:
         Control();
 
+        int run(); //main function 
+
     private:
         Space space;
         Io ioHandeler;

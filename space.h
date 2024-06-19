@@ -1,4 +1,5 @@
 #include <vector>
+#include <string>
 
 #include "obstacle.h"
 #include "spacecraft.h"
@@ -10,6 +11,8 @@ class Space{
     public:
         Space();
         ~Space();
+
+        std::string showMap();
 
     private:
         std::vector<std::vector<Obstacle*>> map;
