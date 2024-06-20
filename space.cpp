@@ -18,8 +18,7 @@ Space::~Space(){
                 y = nullptr;
             }
         }
-    }
-                
+    }         
 }
 string Space::showMap(){
     ostringstream out;
@@ -40,16 +39,15 @@ string Space::showMap(){
 }
 void Space::moveSpacecraft(char dir){
     Spacecraft& mySpacecraft = this->spacecrafts.at(spacecraftIndex); // can befunction
-    const Point& spacecraftLocation = mySpacecraft.getPoint();
 
-    unordered_map<char,Point> vec {{'a',{0,-1}} , {'d',{0,1}} , {'w',{-1,0}} , {'s',{1,0}}};
+    const unordered_map<char,Point>& movment {mySpacecraft.getMoveOptions()};
 
-    Point newPoint = vec[dir] + mySpacecraft.getPoint();
+    Point newPoint = movment.at(dir) + mySpacecraft.getPoint();
     if( 0 > newPoint.getX() or newPoint.getX() >= map.size() or 
         0 > newPoint.getY() or newPoint.getY() >= map.back().size() ){
             cout << "not valid\n";
             return;
-        }
+    }
 
     mySpacecraft.moveTo(newPoint);
 }

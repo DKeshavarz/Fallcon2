@@ -19,7 +19,7 @@ void Point::setX(int input){
 void Point::setY(int input){
     this->y = input;
 }
-Point Point::operator+(const Point& obj){
+Point Point::operator+(const Point& obj)const{
     int x = obj.x + this->x;
     int y = obj.y + this->y;  
     return Point(x,y);

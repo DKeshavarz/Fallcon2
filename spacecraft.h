@@ -1,5 +1,8 @@
 #include "point.h"
 
+#include <unordered_map>
+#include <vector>
+
 #ifndef SPACECRAFT_H
 #define SPACECRAFT_H
 
@@ -10,8 +13,11 @@ class Spacecraft{
         Point getPoint();
         void move(char);
         void moveTo(Point);
+
+        const std::unordered_map<char,Point>& getMoveOptions();
     private:
         Point location;
+        std::unordered_map<char,Point> moveOptions;
 
 };
 

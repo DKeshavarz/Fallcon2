@@ -2,10 +2,13 @@
 
 #include <cctype>
 #include <iostream>
+#include <vector>
 
 using namespace std; 
 
-Spacecraft::Spacecraft(){
+Spacecraft::Spacecraft():
+moveOptions {{'a',{0,-1}} , {'d',{0,1}} , {'w',{-1,0}} , {'s',{1,0}}}
+{
     
 }
 Point Spacecraft::getPoint(){
@@ -22,4 +25,7 @@ void Spacecraft::moveTo(Point location){
     //ckeck location
     this->location = location;
 
+}
+const std::unordered_map<char,Point>& Spacecraft::getMoveOptions(){
+    return this->moveOptions;
 }
