@@ -13,6 +13,7 @@ class Space{
         ~Space();
 
         std::string showMap();
+        void moveSpacecraft(char);
 
     private:
         std::vector<std::vector<Obstacle*>> map;

@@ -8,6 +8,8 @@ class Spacecraft{
         Spacecraft();
 
         Point getPoint();
+        void move(char);
+        void moveTo(Point);
     private:
         Point location;
 

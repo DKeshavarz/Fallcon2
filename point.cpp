@@ -6,7 +6,6 @@ using namespace std;
 
 Point::Point(int x,int y){
     setX(x),setY(y);
-    cout << "niga1";
 }
 int Point::getX(){
     return this->x;
@@ -19,4 +18,9 @@ void Point::setX(int input){
 }
 void Point::setY(int input){
     this->y = input;
+}
+Point Point::operator+(const Point& obj){
+    int x = obj.x + this->x;
+    int y = obj.y + this->y;  
+    return Point(x,y);
 }
