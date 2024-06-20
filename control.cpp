@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Control::Control(){
+Control::Control():space(5,10){
 
 }
 int Control::run(){

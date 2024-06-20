@@ -3,12 +3,16 @@
 #include <iostream>
 #include <sstream>
 #include <unordered_map>
+ #include <stdexcept>
 
 using namespace std;
 
-Space::Space() :
-map(2,vector<Obstacle*> (5,nullptr)){
+Space::Space(int row , int column){
+    if(row <= 0 or column <= 0)
+        throw invalid_argument("Invalid map size");
+    map.assign(row,vector<Obstacle*> (column,nullptr));
     this->spacecrafts.push_back(Spacecraft());
+
 }
 Space::~Space(){
     for(auto& x : this->map){

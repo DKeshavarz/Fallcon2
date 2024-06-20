@@ -9,7 +9,7 @@
 
 class Space{
     public:
-        Space();
+        explicit Space(int,int);
         ~Space();
 
         std::string showMap();
