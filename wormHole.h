@@ -9,10 +9,14 @@
 
 class WormHole : public Obstacle{
     public:
+        WormHole();
+        virtual ~WormHole();
         void addEntry(Point);
         bool isEntry(Point);
 
         std::string showCell(Point);
+
+        virtual const std::vector<Point> specialEffect();
     private:
         std::vector<Point> entries;
 };

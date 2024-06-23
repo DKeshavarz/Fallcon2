@@ -1,4 +1,5 @@
 #include "space.h"
+#include "wormHole.h"
 
 #include <iostream>
 #include <sstream>
@@ -41,6 +42,8 @@ string Space::showMap(){
 
             }else if(map.at(i).at(j) == nullptr){
                 out << ' ';
+            }else{
+                out << map.at(i).at(j)->showCell(Point{i,j});
             }
         }
         out << "|\n";
@@ -52,7 +55,13 @@ void Space::moveSpacecraft(char dir){
 
     const unordered_map<char,Point>& movment {mySpacecraft.getMoveOptions()};
 
-    Point newPoint = movment.at(dir) + mySpacecraft.getPoint();
+    Point newPoint;
+    if(movment.count(dir))
+        newPoint = movment.at(dir) + mySpacecraft.getPoint();
+    else{
+        cout << "invalid key\n";
+        return;
+    }
     if( 0 > newPoint.getX() or newPoint.getX() >= map.size() or 
         0 > newPoint.getY() or newPoint.getY() >= map.back().size() ){
             cout << "not valid\n";
@@ -73,11 +82,19 @@ void Space::loadMap(){
 
     int spacecraftX , spacecraftY , spacecraftEnergy;
     inputFile >> spacecraftX >> spacecraftY >> spacecraftEnergy;
-
     Spacecraft spacecraft = Spacecraft(Point{spacecraftX,spacecraftY},spacecraftEnergy);
     this->spacecrafts.push_back(spacecraft);
 
-    //for(int i {},tmp ; i < )
+    for(int i {}; i < mapRow ; ++i){
+        int tmp;
+        for(int j {}; j < mapColumn ; ++j){
+            inputFile >> tmp;
+            if(map.at(i).at(j) == nullptr and tmp == 4){//worm hole
+                this->map[i][j] = new WormHole();
+            }
+        }
+    }
 
     inputFile.close();
 }
+
