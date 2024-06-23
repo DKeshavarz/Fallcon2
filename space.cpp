@@ -75,8 +75,7 @@ void Space::loadMap(){
     int spacecraftX , spacecraftY , spacecraftEnergy;
     inputFile >> spacecraftX >> spacecraftY >> spacecraftEnergy;
 
-    Spacecraft spacecraft = Spacecraft();
-    spacecraft.setPoint(Point{spacecraftX,spacecraftY});
+    Spacecraft spacecraft = Spacecraft(Point{spacecraftX,spacecraftY},spacecraftEnergy);
     this->spacecrafts.push_back(spacecraft);
 
     inputFile.close();

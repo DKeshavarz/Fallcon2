@@ -6,10 +6,12 @@
 
 using namespace std; 
 
-Spacecraft::Spacecraft():
-moveOptions {{'a',{0,-1}} , {'d',{0,1}} , {'w',{-1,0}} , {'s',{1,0}}}
+Spacecraft::Spacecraft()
 {
     
+}
+Spacecraft::Spacecraft(Point location,int enrgy){
+
 }
 Point Spacecraft::getPoint(){
     return this-> location;
@@ -31,4 +33,12 @@ void Spacecraft::moveTo(Point location){
 }
 const std::unordered_map<char,Point>& Spacecraft::getMoveOptions(){
     return this->moveOptions;
+}
+void Spacecraft::setEnegy(int input){
+    if(input < 0)
+        throw out_of_range("Energy is invalid");
+    this->energy = input;
+}
+int Spacecraft::getEnergy(){
+    return this->energy;
 }
