@@ -24,6 +24,6 @@ Point Point::operator+(const Point& obj)const{
     int y = obj.y + this->y;  
     return Point(x,y);
 }
-Point Point::operator==(const Point& obj)const{
+bool Point::operator==(const Point& obj)const{
     return (obj.x == this->x) and (obj.y == this->y);
 }

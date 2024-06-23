@@ -12,7 +12,7 @@ class Point{
         void setX(int);
 
         Point operator+ (const Point&)const;
-        Point operator==(const Point&)const;
+        bool operator==(const Point&)const;
     private:
         int x;
         int y;
