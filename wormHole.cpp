@@ -25,12 +25,13 @@ string WormHole::showCell(Point){
     return "4";
 }
 const vector<Point> WormHole::creatFromMap(Point startLocation,vector<vector<int>> map){
-    cout << "helll\n";
     vector<Point> ans;
     for(int i {} ; i < map.size() ; ++i){
         for(int j {} ; j < map.at(i).size() ; ++j){
-            if(map.at(i).at(j) == 4)
+            if(map.at(i).at(j) == 4){
                 ans.push_back({i,j});
+                this->entries.push_back({i,j});
+            }  
         }
     }
 
