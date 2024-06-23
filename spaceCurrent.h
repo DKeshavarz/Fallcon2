@@ -17,9 +17,14 @@ class SpaceCurrent : public Obstacle{
 
         std::string showCell(Point);
 
+        virtual const std::vector<Point> creatFromMap (Point,std::vector<std::vector<int>>);
+        virtual const std::vector<Point> specialEffect();
+
     private:
         std::vector<Point> entries;
         std::vector<Point> line;
+
+        void dfs(std::vector<Point>& ,std::vector<std::vector<int>> ,Point);
 };
 
 #endif //SPACECURRENT_H
