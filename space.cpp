@@ -114,6 +114,7 @@ void Space::addObstacle(vector<vector<int>> numericMap){
                 for(const auto& point : obstaclePtr->creatFromMap({i,j},numericMap)){
                     this->map[point.getX()][point.getY()] = obstaclePtr;
                 }
+            obstaclePtr =nullptr;
         }
     }
 }
