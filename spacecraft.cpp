@@ -11,7 +11,8 @@ Spacecraft::Spacecraft()
     
 }
 Spacecraft::Spacecraft(Point location,int enrgy){
-
+    this->setPoint(location);
+    this->setEnegy(energy);
 }
 Point Spacecraft::getPoint(){
     return this-> location;

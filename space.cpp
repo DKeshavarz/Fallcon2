@@ -65,8 +65,7 @@ void Space::loadMap(){
     ifstream inputFile {this->fileName};
 
     if(!inputFile.is_open()){
-        cout << "can't open " << this->fileName << '\n'; 
-        return;
+        throw runtime_error("Can't open " + fileName);
     }
     int mapRow , mapColumn;
     inputFile >> mapRow >> mapColumn;
@@ -77,6 +76,8 @@ void Space::loadMap(){
 
     Spacecraft spacecraft = Spacecraft(Point{spacecraftX,spacecraftY},spacecraftEnergy);
     this->spacecrafts.push_back(spacecraft);
+
+    //for(int i {},tmp ; i < )
 
     inputFile.close();
 }
