@@ -14,6 +14,9 @@ moveOptions {{'a',{0,-1}} , {'d',{0,1}} , {'w',{-1,0}} , {'s',{1,0}}}
 Point Spacecraft::getPoint(){
     return this-> location;
 }
+void Spacecraft::setPoint(Point input){
+    this->location = input;
+}
 void Spacecraft::move(char dir){
     // use unordered map and overload  + in point
     // exeption handeling for unknown dir

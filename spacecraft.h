@@ -11,6 +11,7 @@ class Spacecraft{
         Spacecraft();
 
         Point getPoint();
+        void setPoint(Point);
         void move(char);
         void moveTo(Point);
 

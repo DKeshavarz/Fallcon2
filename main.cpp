@@ -6,6 +6,5 @@ using namespace std;
 
 int main(){
     Control cntrl;
-
     return cntrl.run();
 }

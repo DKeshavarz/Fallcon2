@@ -3,7 +3,8 @@
 #include <iostream>
 #include <sstream>
 #include <unordered_map>
- #include <stdexcept>
+#include <stdexcept>
+#include <fstream> 
 
 using namespace std;
 
@@ -13,6 +14,9 @@ Space::Space(int row , int column){
     map.assign(row,vector<Obstacle*> (column,nullptr));
     this->spacecrafts.push_back(Spacecraft());
 
+}
+Space::Space(){
+    loadMap();
 }
 Space::~Space(){
     for(auto& x : this->map){
@@ -25,8 +29,10 @@ Space::~Space(){
     }         
 }
 string Space::showMap(){
+ 
     ostringstream out;
-    Spacecraft& mySpacecraft = this->spacecrafts.at(spacecraftIndex);
+    Spacecraft& mySpacecraft = this->spacecrafts.at(spacecraftIndex); // ckeck if exist
+    
     for(int i {} ; i < this->map.size() ; ++i){
         out << '|';
         for(int j {} ; j < this->map.at(i).size() ; ++j){
@@ -54,4 +60,24 @@ void Space::moveSpacecraft(char dir){
     }
 
     mySpacecraft.moveTo(newPoint);
+}
+void Space::loadMap(){
+    ifstream inputFile {this->fileName};
+
+    if(!inputFile.is_open()){
+        cout << "can't open " << this->fileName << '\n'; 
+        return;
+    }
+    int mapRow , mapColumn;
+    inputFile >> mapRow >> mapColumn;
+    map.assign(mapRow,vector<Obstacle*> (mapColumn,nullptr));
+
+    int spacecraftX , spacecraftY , spacecraftEnergy;
+    inputFile >> spacecraftX >> spacecraftY >> spacecraftEnergy;
+
+    Spacecraft spacecraft = Spacecraft();
+    spacecraft.setPoint(Point{spacecraftX,spacecraftY});
+    this->spacecrafts.push_back(spacecraft);
+
+    inputFile.close();
 }
