@@ -7,10 +7,10 @@ using namespace std;
 Point::Point(int x,int y){
     setX(x),setY(y);
 }
-int Point::getX(){
+int Point::getX()const{
     return this->x;
 }
-int Point::getY(){
+int Point::getY()const{
     return this->y;
 }
 void Point::setX(int input){
@@ -23,4 +23,7 @@ Point Point::operator+(const Point& obj)const{
     int x = obj.x + this->x;
     int y = obj.y + this->y;  
     return Point(x,y);
+}
+Point Point::operator==(const Point& obj)const{
+    return (obj.x == this->x) and (obj.y == this->y);
 }

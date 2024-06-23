@@ -5,13 +5,14 @@ class Point{
     public:
         Point(int=0,int=0);
 
-        int getX();
-        int getY();
+        int getX()const;
+        int getY()const;
 
         void setY(int);
         void setX(int);
 
-        Point operator+(const Point&)const;
+        Point operator+ (const Point&)const;
+        Point operator==(const Point&)const;
     private:
         int x;
         int y;
