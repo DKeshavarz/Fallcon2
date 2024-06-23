@@ -10,9 +10,9 @@ Spacecraft::Spacecraft()
 {
     
 }
-Spacecraft::Spacecraft(Point location,int enrgy){
+Spacecraft::Spacecraft(Point location,int inputEnergy){
     this->setPoint(location);
-    this->setEnegy(energy);
+    this->setEnegy(inputEnergy);
 }
 Point Spacecraft::getPoint(){
     return this-> location;
