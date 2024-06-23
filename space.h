@@ -25,6 +25,9 @@ class Space{
         int spacecraftIndex {};
         const std::string fileName {"input.txt"};
 
+        //function
+        void addObstacle(std::vector<std::vector<int>>);
+
 };
 
 #endif //SPACE_H

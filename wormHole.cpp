@@ -1,6 +1,7 @@
 #include "wormHole.h"
 
 #include <iostream>
+using namespace std;
 
 WormHole::WormHole(){
 
@@ -20,9 +21,21 @@ bool WormHole::isEntry(Point input){
     }
     return false;
 }
-std::string WormHole::showCell(Point){
+string WormHole::showCell(Point){
     return "4";
 }
-const std::vector<Point> WormHole::specialEffect(){
+const vector<Point> WormHole::creatFromMap(Point startLocation,vector<vector<int>> map){
+    cout << "helll\n";
+    vector<Point> ans;
+    for(int i {} ; i < map.size() ; ++i){
+        for(int j {} ; j < map.at(i).size() ; ++j){
+            if(map.at(i).at(j) == 4)
+                ans.push_back({i,j});
+        }
+    }
+
+    return ans;   
+}
+const vector<Point> WormHole::specialEffect(){
     return {};
 }

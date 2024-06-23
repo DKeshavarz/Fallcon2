@@ -16,6 +16,7 @@ class WormHole : public Obstacle{
 
         std::string showCell(Point);
 
+        virtual const std::vector<Point> creatFromMap (Point,std::vector<std::vector<int>>);
         virtual const std::vector<Point> specialEffect();
     private:
         std::vector<Point> entries;

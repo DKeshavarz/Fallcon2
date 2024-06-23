@@ -85,16 +85,36 @@ void Space::loadMap(){
     Spacecraft spacecraft = Spacecraft(Point{spacecraftX,spacecraftY},spacecraftEnergy);
     this->spacecrafts.push_back(spacecraft);
 
+    vector<vector<int>> tmpMapHolder(mapRow,vector<int>(mapColumn,-1));
     for(int i {}; i < mapRow ; ++i){
-        int tmp;
         for(int j {}; j < mapColumn ; ++j){
-            inputFile >> tmp;
-            if(map.at(i).at(j) == nullptr and tmp == 4){//worm hole
-                this->map[i][j] = new WormHole();
-            }
+            inputFile >>tmpMapHolder[i][j] ;        
         }
     }
 
+    addObstacle(tmpMapHolder);
+
     inputFile.close();
+}
+void Space::addObstacle(vector<vector<int>> numericMap){
+    Obstacle* obstaclePtr {nullptr};
+    for(int i {} ; i < numericMap.size() ; ++i){
+        for(int j {} ; j < numericMap.at(i).size() ; ++j){
+            if(this->map.at(i).at(j) != nullptr){
+                //empty on purpose
+            }else if(numericMap.at(i).at(j) == 4){
+                obstaclePtr = new WormHole();
+            }else if(numericMap.at(i).at(j) == 3){
+
+            }else if(numericMap.at(i).at(j) == 2 or numericMap.at(i).at(j) == 1){
+
+            }
+            
+            if(obstaclePtr)
+                for(const auto& point : obstaclePtr->creatFromMap({i,j},numericMap)){
+                    this->map[point.getX()][point.getY()] = obstaclePtr;
+                }
+        }
+    }
 }
 
