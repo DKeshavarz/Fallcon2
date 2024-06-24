@@ -45,7 +45,7 @@ const vector<Point> SpaceCurrent::creatFromMap (Point startLocation,vector<vecto
     return ans;
 }
 const vector<Point> SpaceCurrent::specialEffect(){
-
+    return vector<Point>();
 }
 
 void SpaceCurrent::dfs(vector<Point>& ans,vector<vector<int>> map , Point start){

@@ -7,6 +7,7 @@
 class Control{
     public:
         Control();
+        ~Control();
 
         int run(); //main function 
 

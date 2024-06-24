@@ -1,5 +1,6 @@
 #include <vector>
 #include <string>
+#include <memory>
 
 #include "obstacle.h"
 #include "spacecraft.h"
@@ -19,7 +20,7 @@ class Space{
         void loadMap();
 
     private:
-        std::vector<std::vector<Obstacle*>> map;
+        std::vector<std::vector<std::shared_ptr<Obstacle>>> map;
 
         std::vector<Spacecraft> spacecrafts;
         int spacecraftIndex {};

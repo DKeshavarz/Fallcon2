@@ -7,6 +7,9 @@ using namespace std;
 Control::Control(){
 
 }
+Control::~Control(){
+    
+}
 int Control::run(){
    
     char ch;
@@ -21,6 +24,6 @@ int Control::run(){
         
 
     }while(ch != 'q');
-
+    
     return 0;
 }

@@ -1,5 +1,6 @@
 #include "space.h"
 #include "wormHole.h"
+#include "spaceCurrent.h"
 
 #include <iostream>
 #include <sstream>
@@ -12,7 +13,7 @@ using namespace std;
 Space::Space(int row , int column){
     if(row <= 0 or column <= 0)
         throw invalid_argument("Invalid map size");
-    map.assign(row,vector<Obstacle*> (column,nullptr));
+    map.assign(row,vector<shared_ptr<Obstacle>> (column));
     this->spacecrafts.push_back(Spacecraft());
 
 }
@@ -20,14 +21,7 @@ Space::Space(){
     loadMap();
 }
 Space::~Space(){
-    for(auto& x : this->map){
-        for(auto& y : x){
-            if(y != nullptr){
-                delete y;
-                y = nullptr;
-            }
-        }
-    }         
+         
 }
 string Space::showMap(){
  
@@ -78,7 +72,7 @@ void Space::loadMap(){
     }
     int mapRow , mapColumn;
     inputFile >> mapRow >> mapColumn;
-    map.assign(mapRow,vector<Obstacle*> (mapColumn,nullptr));
+    map.assign(mapRow,vector<shared_ptr<Obstacle>> (mapColumn));
 
     int spacecraftX , spacecraftY , spacecraftEnergy;
     inputFile >> spacecraftX >> spacecraftY >> spacecraftEnergy;
@@ -97,24 +91,27 @@ void Space::loadMap(){
     inputFile.close();
 }
 void Space::addObstacle(vector<vector<int>> numericMap){
-    Obstacle* obstaclePtr {nullptr};
+    shared_ptr<Obstacle> obstaclePtr;
+    //cout << "Space::addObstacle -> start \n";
     for(int i {} ; i < numericMap.size() ; ++i){
         for(int j {} ; j < numericMap.at(i).size() ; ++j){
             if(this->map.at(i).at(j) != nullptr){
                 //empty on purpose
             }else if(numericMap.at(i).at(j) == 4){
-                obstaclePtr = new WormHole();
+                obstaclePtr = shared_ptr<Obstacle> (new WormHole());
             }else if(numericMap.at(i).at(j) == 3){
 
             }else if(numericMap.at(i).at(j) == 2 or numericMap.at(i).at(j) == 1){
-
+                //obstaclePtr = new SpaceCurrent();
             }
             
-            if(obstaclePtr)
+            if(obstaclePtr){
                 for(const auto& point : obstaclePtr->creatFromMap({i,j},numericMap)){
-                    this->map[point.getX()][point.getY()] = obstaclePtr;
+                    this->map[point.getX()][point.getY()] =obstaclePtr;
                 }
-            obstaclePtr =nullptr;
+            }
+            
+            obstaclePtr.reset();
         }
     }
 }
