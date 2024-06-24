@@ -1,10 +1,23 @@
 #include "spaceCurrent.h"
 
- #include <stdexcept>
- #include <iostream>
+#include <stdexcept>
+#include <iostream>
 
 using namespace std;
 
+SpaceCurrent::SpaceCurrent(){
+
+}
+SpaceCurrent::~SpaceCurrent(){
+    cout << "ent is - > ";
+    for(const auto& i : this->entries)
+        cout << i.getX() << ' ' << i.getY() << '-';
+    cout << '\n';
+    cout << "line is - > ";
+    for(const auto& i : this->line)
+        cout << i.getX() << ' ' << i.getY() << '-';
+    cout << '\n';
+}
 void SpaceCurrent::addEntry(Point input){
     //validation
     this->entries.push_back(input);
@@ -39,22 +52,21 @@ const vector<Point> SpaceCurrent::creatFromMap (Point startLocation,vector<vecto
     vector<Point> ans;
     dfs(ans,map,startLocation);
 
-    cout << "vector<Point> SpaceCurrent::creatFromMap -> ans is:";
-    for(const auto& x : ans)
-        cout << x.getX() << ' ' << x.getY() << "   ";
     return ans;
 }
 const vector<Point> SpaceCurrent::specialEffect(){
     return vector<Point>();
 }
 
-void SpaceCurrent::dfs(vector<Point>& ans,vector<vector<int>> map , Point start){
+void SpaceCurrent::dfs(vector<Point>& ans,vector<vector<int>>& map , Point start){
     int x {start.getX()} , y {start.getY()};
     
     try{
         if(map.at(x).at(y) == 1 || map.at(x).at(y) == 2){
+            
             if(map.at(x).at(y) == 1) this->entries.push_back({x,y});
             else                     this->line.push_back({x,y});
+            map[x][y] = 0;  // dangrous line
             ans.push_back({x,y});
             dfs(ans,map,{x+1,y});dfs(ans,map,{x-1,y});
             dfs(ans,map,{x,y+1});dfs(ans,map,{x+1,y-1});

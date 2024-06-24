@@ -21,7 +21,7 @@ Space::Space(){
     loadMap();
 }
 Space::~Space(){
-         
+
 }
 string Space::showMap(){
  
@@ -102,7 +102,7 @@ void Space::addObstacle(vector<vector<int>> numericMap){
             }else if(numericMap.at(i).at(j) == 3){
 
             }else if(numericMap.at(i).at(j) == 2 or numericMap.at(i).at(j) == 1){
-                //obstaclePtr = new SpaceCurrent();
+                obstaclePtr = shared_ptr<Obstacle> (new SpaceCurrent());
             }
             
             if(obstaclePtr){

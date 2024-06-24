@@ -9,6 +9,8 @@
 
 class SpaceCurrent : public Obstacle{
     public:
+        SpaceCurrent();
+        ~SpaceCurrent();
         void addEntry(Point);
         bool isEntry(Point);
 
@@ -24,7 +26,7 @@ class SpaceCurrent : public Obstacle{
         std::vector<Point> entries;
         std::vector<Point> line;
 
-        void dfs(std::vector<Point>& ,std::vector<std::vector<int>> ,Point);
+        void dfs(std::vector<Point>& ,std::vector<std::vector<int>>& ,Point);
 };
 
 #endif //SPACECURRENT_H
