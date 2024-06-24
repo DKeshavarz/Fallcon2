@@ -1,7 +1,11 @@
+#include <iostream>
+
 #ifndef POINT_H
 #define POINT_H
 //todo : inline small function
 class Point{
+    friend std::ostream& operator<<(std::ostream& os, const Point& obj);
+    
     public:
         Point(int=0,int=0);
 

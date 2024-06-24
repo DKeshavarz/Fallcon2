@@ -1,7 +1,5 @@
 #include "point.h"
 
-#include <iostream>
-
 using namespace std;
 
 Point::Point(int x,int y){
@@ -26,4 +24,8 @@ Point Point::operator+(const Point& obj)const{
 }
 bool Point::operator==(const Point& obj)const{
     return (obj.x == this->x) and (obj.y == this->y);
+}
+ostream& operator<<(ostream& os, const Point& obj) { 
+    os <<  "X:" << obj.x << " Y:" << obj.y;
+    return os; 
 }
