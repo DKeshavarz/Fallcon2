@@ -10,3 +10,9 @@ Obstacle::Obstacle(){
 Obstacle::~Obstacle(){
     
 }
+vector<Point>& Obstacle::getEntries(){
+    return this->entries;
+}
+const vector<Point>& Obstacle::getEntries()const{
+    return this->entries;
+}

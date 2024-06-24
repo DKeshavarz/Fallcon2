@@ -6,24 +6,15 @@
 using namespace std;
 
 SpaceCurrent::SpaceCurrent(){
-
 }
 SpaceCurrent::~SpaceCurrent(){
-    cout << "ent is - > ";
-    for(const auto& i : this->entries)
-        cout << i.getX() << ' ' << i.getY() << '-';
-    cout << '\n';
-    cout << "line is - > ";
-    for(const auto& i : this->line)
-        cout << i.getX() << ' ' << i.getY() << '-';
-    cout << '\n';
 }
 void SpaceCurrent::addEntry(Point input){
     //validation
-    this->entries.push_back(input);
+    this->getEntries().push_back(input);
 }
-bool SpaceCurrent::isEntry(Point input){
-    for(const auto& point : this->entries)
+bool SpaceCurrent::isEntry(Point input)const{
+    for(const auto& point : this->getEntries())
         if(input.getX() == point.getX() and input.getX() == point.getX())//todo:replace with ==
             return true;
 
@@ -34,23 +25,24 @@ void SpaceCurrent::addLine(Point input){
     //validation like dublicated
     this->line.push_back(input);
 }
-bool SpaceCurrent::isLine(Point input){
+bool SpaceCurrent::isLine(Point input)const{
     for(const auto& point : this->line)
-        if(input.getX() == point.getX() and input.getX() == point.getX())//todo:replace with ==
+        if(input == point)
             return true;
 
     return false;
 }
 
-std::string SpaceCurrent::showCell(Point input){
+std::string SpaceCurrent::showCell(Point input)const{
     if(isEntry(input))
         return "1";
     return "2";
 }
 
-const vector<Point> SpaceCurrent::creatFromMap (Point startLocation,vector<vector<int>> map){
+const vector<Point> SpaceCurrent::creatFromMap (Point startLocation,const vector<vector<int>>& map){
     vector<Point> ans;
-    dfs(ans,map,startLocation);
+    vector<vector<int>> tmp = (map);
+    dfs(ans,tmp,startLocation);
 
     return ans;
 }
@@ -64,7 +56,7 @@ void SpaceCurrent::dfs(vector<Point>& ans,vector<vector<int>>& map , Point start
     try{
         if(map.at(x).at(y) == 1 || map.at(x).at(y) == 2){
             
-            if(map.at(x).at(y) == 1) this->entries.push_back({x,y});
+            if(map.at(x).at(y) == 1) this->getEntries().push_back({x,y});
             else                     this->line.push_back({x,y});
             map[x][y] = 0;  // dangrous line
             ans.push_back({x,y});

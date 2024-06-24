@@ -12,18 +12,17 @@ class SpaceCurrent : public Obstacle{
         SpaceCurrent();
         ~SpaceCurrent();
         void addEntry(Point);
-        bool isEntry(Point);
+        bool isEntry(Point)const;
 
         void addLine(Point);
-        bool isLine(Point);
+        bool isLine(Point)const;
 
-        std::string showCell(Point);
+        std::string showCell(Point)const;
 
-        virtual const std::vector<Point> creatFromMap (Point,std::vector<std::vector<int>>);
+        virtual const std::vector<Point> creatFromMap (Point,const std::vector<std::vector<int>>&);
         virtual const std::vector<Point> specialEffect();
 
     private:
-        std::vector<Point> entries;
         std::vector<Point> line;
 
         void dfs(std::vector<Point>& ,std::vector<std::vector<int>>& ,Point);

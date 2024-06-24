@@ -14,12 +14,12 @@ class WormHole : public Obstacle{
         void addEntry(Point);
         bool isEntry(Point);
 
-        std::string showCell(Point);
+        std::string showCell(Point)const;
 
-        virtual const std::vector<Point> creatFromMap (Point,std::vector<std::vector<int>>);
+        virtual const std::vector<Point> creatFromMap (Point,const std::vector<std::vector<int>>&);
         virtual const std::vector<Point> specialEffect();
     private:
-        std::vector<Point> entries;
+        
 };
 
 #endif //WORMHOLE_H

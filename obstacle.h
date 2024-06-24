@@ -11,11 +11,17 @@ class Obstacle{
         Obstacle();
         virtual ~Obstacle();
 
-        virtual std::string showCell(Point)=0;
+
+        virtual std::string showCell(Point)const=0;
         virtual const std::vector<Point> specialEffect()=0;
-        virtual const std::vector<Point> creatFromMap (Point,std::vector<std::vector<int>>)=0;
+        virtual const std::vector<Point> creatFromMap (Point,const std::vector<std::vector<int>>&)=0;
+
+    protected:
+        std::vector<Point>& getEntries();
+        const std::vector<Point>& getEntries()const;
 
     private:
+        std::vector<Point> entries;
 };
 
 #endif //OBSTACLE_H
