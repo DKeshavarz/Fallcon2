@@ -6,40 +6,30 @@
 
 using namespace std; 
 
-Spacecraft::Spacecraft()
-{
-    
+Spacecraft::Spacecraft(){ 
 }
-Spacecraft::Spacecraft(Point location,int inputEnergy){
+Spacecraft::Spacecraft(const Point& location,int inputEnergy){
     this->setPoint(location);
     this->setEnegy(inputEnergy);
 }
-Point Spacecraft::getPoint(){
-    return this-> location;
-}
-void Spacecraft::setPoint(Point input){
+void Spacecraft::setPoint(const Point& input){
     this->location = input;
 }
-void Spacecraft::move(char dir){
-    // use unordered map and overload  + in point
-    // exeption handeling for unknown dir
-    dir = tolower(dir);
-    
-    
-}
 void Spacecraft::moveTo(Point location){
-    //ckeck location
-    this->location = location;
+    for(const auto[ch,point] : moveOptions){
+        if(point+this->location == location){
+            this->location = location;
+            return;
+        }
+    }
 
+    throw invalid_argument("Spacecraft can't go to that point");
 }
-const std::unordered_map<char,Point>& Spacecraft::getMoveOptions(){
+const std::unordered_map<char,Point>& Spacecraft::getMoveOptions()const{
     return this->moveOptions;
 }
 void Spacecraft::setEnegy(int input){
     if(input < 0)
         throw out_of_range("Energy is invalid");
     this->energy = input;
-}
-int Spacecraft::getEnergy(){
-    return this->energy;
 }
