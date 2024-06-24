@@ -13,6 +13,7 @@ using namespace std;
 Space::Space(int row , int column){
     if(row <= 0 or column <= 0)
         throw invalid_argument("Invalid map size");
+
     map.assign(row,vector<shared_ptr<Obstacle>> (column));
     this->spacecrafts.push_back(Spacecraft());
 
@@ -23,24 +24,32 @@ Space::Space(){
 Space::~Space(){
 
 }
-string Space::showMap(){
- 
+string Space::showMap()const{
+
+    if(0 > this-> spacecraftIndex or this->spacecrafts.size() <= this-> spacecraftIndex)
+        throw out_of_range("Current spacecraft dosn't exist");
+
     ostringstream out;
-    Spacecraft& mySpacecraft = this->spacecrafts.at(spacecraftIndex); // ckeck if exist
+    const Spacecraft& mySpacecraft = this->spacecrafts.at(spacecraftIndex); //only for simple access 
     
     for(int i {} ; i < this->map.size() ; ++i){
         out << '|';
         for(int j {} ; j < this->map.at(i).size() ; ++j){
             if(i == mySpacecraft.getPoint().getX() and j == mySpacecraft.getPoint().getY()){
-                out << '*';
+                out << " * ";
 
             }else if(map.at(i).at(j) == nullptr){
-                out << ' ';
+                out << "   ";
             }else{
-                out << map.at(i).at(j)->showCell(Point{i,j});
+                out << " " <<map.at(i).at(j)->showCell(Point{i,j}) << " ";
             }
+            out << "|";
         }
-        out << "|\n";
+        out << '\n';
+        for(int j {} ; j < this->map.at(i).size() ; ++j)
+            out << "----";
+        out << '\n';
+        
     }
     return out.str();
 }

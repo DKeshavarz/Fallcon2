@@ -14,7 +14,7 @@ class Space{
         Space();
         ~Space();
 
-        std::string showMap();
+        std::string showMap()const;
         void moveSpacecraft(char);
 
         void loadMap();

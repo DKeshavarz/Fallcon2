@@ -8,6 +8,13 @@ using namespace std;
 SpaceCurrent::SpaceCurrent(){
 }
 SpaceCurrent::~SpaceCurrent(){
+    // cout << "~SpaceCurrent() -> ";
+    // for(const auto& i : this->getEntries())
+    //     cout << i << " - ";
+    // cout << '\n';
+    // for(const auto& i : this->line)
+    //     cout << i << " - ";
+    // cout << '\n';
 }
 void SpaceCurrent::addEntry(Point input){
     //validation
@@ -15,7 +22,7 @@ void SpaceCurrent::addEntry(Point input){
 }
 bool SpaceCurrent::isEntry(Point input)const{
     for(const auto& point : this->getEntries())
-        if(input.getX() == point.getX() and input.getX() == point.getX())//todo:replace with ==
+        if(point == input)
             return true;
 
     return false;
