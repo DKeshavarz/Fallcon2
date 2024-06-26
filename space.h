@@ -28,6 +28,9 @@ class Space{
 
         //function
         void addObstacle(std::vector<std::vector<int>>);
+        const Obstacle* const getCell(const Point&);
+        bool isOnMap(const Point&);
+        bool isOnMap(int,int);
 
 };
 

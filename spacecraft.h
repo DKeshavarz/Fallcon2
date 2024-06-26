@@ -1,4 +1,5 @@
 #include "point.h"
+#include "obstacle.h"
 
 #include <unordered_map>
 #include <vector>
@@ -19,7 +20,7 @@ class Spacecraft{
         const std::unordered_map<char,Point>& getMoveOptions()const;
         const Point& getMoveToDir(char)const;
 
-        void moveTo(Point);
+        void moveTo(Point,const Obstacle* const);
 
     private:
         int energy;

@@ -15,14 +15,14 @@ Spacecraft::Spacecraft(const Point& location,int inputEnergy){
 void Spacecraft::setPoint(const Point& input){
     this->location = input;
 }
-void Spacecraft::moveTo(Point location){
+void Spacecraft::moveTo(Point location,const Obstacle* const obstacle){
     for(const auto[ch,point] : moveOptions){
         if(point+this->location == location){
             this->location = location;
             return;
         }
     }
-    cout << location << '\n';
+    
     throw invalid_argument("Spacecraft can't go to that point");
 }
 const std::unordered_map<char,Point>& Spacecraft::getMoveOptions()const{

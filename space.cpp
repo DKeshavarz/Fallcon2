@@ -16,7 +16,6 @@ Space::Space(int row , int column){
 
     map.assign(row,vector<shared_ptr<Obstacle>> (column));
     this->spacecrafts.push_back(Spacecraft());
-
 }
 Space::Space(){
     loadMap();
@@ -37,7 +36,6 @@ string Space::showMap()const{
         for(int j {} ; j < this->map.at(i).size() ; ++j){
             if(i == mySpacecraft.getPoint().getX() and j == mySpacecraft.getPoint().getY()){
                 out << " * ";
-
             }else if(map.at(i).at(j) == nullptr){
                 out << "   ";
             }else{
@@ -58,12 +56,7 @@ void Space::moveSpacecraft(char dir){
    
     Point newPoint = mySpacecraft.getMoveToDir(dir) + mySpacecraft.getPoint();
     
-    if( 0 > newPoint.getX() or newPoint.getX() >= map.size() or 
-        0 > newPoint.getY() or newPoint.getY() >= map.back().size() ){
-            throw invalid_argument("position is out side of map");
-    }
-    
-    mySpacecraft.moveTo(newPoint);
+    mySpacecraft.moveTo(newPoint,getCell(newPoint));
 }
 void Space::loadMap(){
     ifstream inputFile {this->fileName};
@@ -117,3 +110,15 @@ void Space::addObstacle(vector<vector<int>> numericMap){
     }
 }
 
+bool Space::isOnMap(int i,int j){
+    return !( 0 > i or i >= map.size() or 0 > j or j >= map.back().size() );
+}
+bool Space::isOnMap(const Point& point){
+    return this->isOnMap(point.getX(),point.getY());
+}
+const Obstacle* const Space::getCell(const Point& point){
+    if(!this->isOnMap(point))
+        throw invalid_argument("postion is outside the map");
+    
+    return this->map.at(point.getX()).at(point.getY()).get();
+}
