@@ -16,6 +16,9 @@ void Spacecraft::setPoint(const Point& input){
     this->location = input;
 }
 void Spacecraft::moveTo(Point location,const Obstacle* const obstacle){
+    if(obstacle and !obstacle->canCollision(location)){
+        throw invalid_argument("can not have collision with this");
+    }
     for(const auto[ch,point] : moveOptions){
         if(point+this->location == location){
             this->location = location;
