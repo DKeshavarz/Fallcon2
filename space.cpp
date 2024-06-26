@@ -54,23 +54,15 @@ string Space::showMap()const{
     return out.str();
 }
 void Space::moveSpacecraft(char dir){
-    Spacecraft& mySpacecraft = this->spacecrafts.at(spacecraftIndex); // can befunction
-
-    const unordered_map<char,Point>& movment {mySpacecraft.getMoveOptions()};
-
-    Point newPoint;
-    if(movment.count(dir))
-        newPoint = movment.at(dir) + mySpacecraft.getPoint();
-    else{
-        cout << "invalid key\n";
-        return;
-    }
+    Spacecraft& mySpacecraft = this->spacecrafts.at(spacecraftIndex); // can be a function
+   
+    Point newPoint = mySpacecraft.getMoveToDir(dir) + mySpacecraft.getPoint();
+    
     if( 0 > newPoint.getX() or newPoint.getX() >= map.size() or 
         0 > newPoint.getY() or newPoint.getY() >= map.back().size() ){
-            cout << "not valid\n";
-            return;
+            throw invalid_argument("position is out side of map");
     }
-
+    
     mySpacecraft.moveTo(newPoint);
 }
 void Space::loadMap(){

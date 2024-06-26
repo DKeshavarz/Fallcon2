@@ -20,9 +20,12 @@ int Control::run(){
        
         this->io.clear();
         
-        space.moveSpacecraft(ch);
+        try{
+            space.moveSpacecraft(ch);
+        }catch(invalid_argument& err){
+            this->io.output(err.what() + string(1,'\n'));
+        }
         
-
     }while(ch != 'q');
     
     return 0;

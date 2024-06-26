@@ -17,6 +17,7 @@ class Spacecraft{
         const int&   getEnergy()const {return this->energy   ;}
         const Point& getPoint ()const {return this->location ;}
         const std::unordered_map<char,Point>& getMoveOptions()const;
+        const Point& getMoveToDir(char)const;
 
         void moveTo(Point);
 
