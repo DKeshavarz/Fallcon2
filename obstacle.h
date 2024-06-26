@@ -11,14 +11,14 @@ class Obstacle{
         Obstacle();
         virtual ~Obstacle();
 
-
+        virtual bool canCollision(const Point&)const = 0;
         virtual std::string showCell(Point)const=0;
         virtual const std::vector<Point> specialEffect()=0;
         virtual const std::vector<Point> creatFromMap (Point,const std::vector<std::vector<int>>&)=0;
 
     protected:
         std::vector<Point>& getEntries();
-        const std::vector<Point>& getEntries()const;
+        const std::vector<Point>& constGetEntries()const;
 
     private:
         std::vector<Point> entries;

@@ -21,7 +21,7 @@ void SpaceCurrent::addEntry(Point input){
     this->getEntries().push_back(input);
 }
 bool SpaceCurrent::isEntry(Point input)const{
-    for(const auto& point : this->getEntries())
+    for(const auto& point : this->constGetEntries())
         if(point == input)
             return true;
 
@@ -74,4 +74,11 @@ void SpaceCurrent::dfs(vector<Point>& ans,vector<vector<int>>& map , Point start
     }catch(const out_of_range& err){
         return;
     }
+}
+bool SpaceCurrent::canCollision(const Point& location)const{
+    for(const auto& point : this->constGetEntries()){
+        if(point == location)
+            return true;
+    }
+    return false;
 }

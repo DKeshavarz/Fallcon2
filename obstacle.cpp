@@ -13,6 +13,6 @@ Obstacle::~Obstacle(){
 vector<Point>& Obstacle::getEntries(){
     return this->entries;
 }
-const vector<Point>& Obstacle::getEntries()const{
+const vector<Point>& Obstacle::constGetEntries()const{
     return this->entries;
 }

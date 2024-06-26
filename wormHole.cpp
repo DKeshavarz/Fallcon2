@@ -40,3 +40,6 @@ const vector<Point> WormHole::creatFromMap(Point startLocation,const vector<vect
 const vector<Point> WormHole::specialEffect(){
     return {};
 }
+bool WormHole::canCollision(const Point& lacation)const{
+    return true;
+}

@@ -19,6 +19,7 @@ class SpaceCurrent : public Obstacle{
 
         std::string showCell(Point)const;
 
+        virtual bool canCollision(const Point&)const ;
         virtual const std::vector<Point> creatFromMap (Point,const std::vector<std::vector<int>>&);
         virtual const std::vector<Point> specialEffect();
 
