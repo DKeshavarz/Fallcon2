@@ -21,6 +21,7 @@ class Spacecraft{
         const Point& getMoveToDir(char)const;
 
         void moveTo(Point,const Obstacle* const);
+        void useSpecialMove(const Obstacle* const);
 
     private:
         int energy;

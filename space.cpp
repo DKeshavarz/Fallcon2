@@ -58,6 +58,10 @@ void Space::moveSpacecraft(char dir){
     
     mySpacecraft.moveTo(newPoint,getCell(newPoint));
 }
+void Space::specialMoveSpacecraft(){
+    Spacecraft& mySpacecraft = this->spacecrafts.at(spacecraftIndex); // can be function
+    mySpacecraft.useSpecialMove(getCell(mySpacecraft.getPoint()));
+}
 void Space::loadMap(){
     ifstream inputFile {this->fileName};
 

@@ -15,13 +15,15 @@ int Control::run(){
     char ch;
     do{
         this->io.output(this->space.showMap());
-       
         ch = this->io.input();
-       
         this->io.clear();
         
         try{
-            space.moveSpacecraft(ch);
+            if(ch == ' '){
+                space.specialMoveSpacecraft();
+            }else{
+                space.moveSpacecraft(ch);
+            }
         }catch(invalid_argument& err){
             this->io.output(err.what() + string(1,'\n'));
         }

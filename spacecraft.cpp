@@ -43,3 +43,11 @@ const Point& Spacecraft::getMoveToDir(char direction)const{
 
     return this->moveOptions.at(direction);
 }
+void Spacecraft::useSpecialMove(const Obstacle* const obstacle){
+    if(!obstacle){
+        throw invalid_argument("There in no object in space");
+    }
+
+    const vector<Point> movment {obstacle->specialEffect(this->getPoint())};
+    this->setPoint(movment.back());
+}

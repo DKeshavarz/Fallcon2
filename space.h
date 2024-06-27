@@ -16,6 +16,7 @@ class Space{
 
         std::string showMap()const;
         void moveSpacecraft(char);
+        void specialMoveSpacecraft();
 
         void loadMap();
 
@@ -31,6 +32,7 @@ class Space{
         const Obstacle* const getCell(const Point&);
         bool isOnMap(const Point&);
         bool isOnMap(int,int);
+
 
 };
 
