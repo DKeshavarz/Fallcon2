@@ -29,3 +29,6 @@ ostream& operator<<(ostream& os, const Point& obj) {
     os <<  "X:" << obj.x << " Y:" << obj.y;
     return os; 
 }
+bool Point::operator!=(const Point& obj)const{
+    return !(obj == *this);
+}
