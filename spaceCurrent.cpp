@@ -16,17 +16,6 @@ SpaceCurrent::~SpaceCurrent(){
     //     cout << i << " - ";
     // cout << '\n';
 }
-void SpaceCurrent::addEntry(Point input){
-    //validation
-    this->getEntries().push_back(input);
-}
-bool SpaceCurrent::isEntry(Point input)const{
-    for(const auto& point : this->constGetEntries())
-        if(point == input)
-            return true;
-
-    return false;
-}
 
 void SpaceCurrent::addLine(Point input){
     //validation like dublicated

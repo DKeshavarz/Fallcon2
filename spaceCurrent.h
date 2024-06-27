@@ -11,8 +11,7 @@ class SpaceCurrent : public Obstacle{
     public:
         SpaceCurrent();
         ~SpaceCurrent();
-        void addEntry(Point);
-        bool isEntry(Point)const;
+
 
         void addLine(Point);
         bool isLine(Point)const;
