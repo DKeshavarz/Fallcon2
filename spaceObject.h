@@ -4,15 +4,13 @@
 #include <vector>
 #include <string>
 
-#ifndef WORMHOLE_H
-#define WORMHOLE_H
+#ifndef SPACEOBJECT_H
+#define SPACEOBJECT_H
 
-class WormHole : public Obstacle{
+class SpaceObject : public Obstacle{
     public:
-        WormHole();
-        virtual ~WormHole();
-        void addEntry(Point);
-        bool isEntry(Point);
+        SpaceObject();
+        virtual ~SpaceObject();
 
         virtual std::string showCell(Point)const;
 
@@ -20,7 +18,8 @@ class WormHole : public Obstacle{
         virtual const std::vector<Point> creatFromMap (Point,const std::vector<std::vector<int>>&);
         virtual const std::vector<Point> specialEffect(Point)const;
     private:
-        
+        std::vector<Point> planet;
 };
 
-#endif //WORMHOLE_H
+
+#endif // SPACEOBJECT_H
