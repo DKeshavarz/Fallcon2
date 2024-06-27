@@ -53,7 +53,7 @@ const vector<Point> SpaceCurrent::creatFromMap (Point startLocation,const vector
 
     return ans;
 }
-const vector<Point> SpaceCurrent::specialEffect(Point loacation){
+const vector<Point> SpaceCurrent::specialEffect(Point loacation)const{
     bool flag {true};
 
     vector <Point> ans {this->line};

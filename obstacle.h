@@ -13,7 +13,7 @@ class Obstacle{
 
         virtual bool canCollision(const Point&)const = 0;
         virtual std::string showCell(Point)const=0;
-        virtual const std::vector<Point> specialEffect(Point)=0;
+        virtual const std::vector<Point> specialEffect(Point)const=0;
         virtual const std::vector<Point> creatFromMap (Point,const std::vector<std::vector<int>>&)=0;
 
     protected:
