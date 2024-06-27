@@ -53,8 +53,22 @@ const vector<Point> SpaceCurrent::creatFromMap (Point startLocation,const vector
 
     return ans;
 }
-const vector<Point> SpaceCurrent::specialEffect(){
-    return vector<Point>();
+const vector<Point> SpaceCurrent::specialEffect(Point loacation){
+    bool flag {true};
+
+    vector <Point> ans {this->line};
+    for(const auto& tmpPoint : this->constGetEntries()){
+        if(tmpPoint != loacation){
+            ans.push_back(tmpPoint);
+        }else{
+            flag = false;
+        }
+    }
+
+    if(flag){
+        throw invalid_argument("You can't use spaceCurrent from here");
+    }
+    return ans;
 }
 
 void SpaceCurrent::dfs(vector<Point>& ans,vector<vector<int>>& map , Point start){

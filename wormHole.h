@@ -18,7 +18,7 @@ class WormHole : public Obstacle{
 
         virtual bool canCollision(const Point&)const;
         virtual const std::vector<Point> creatFromMap (Point,const std::vector<std::vector<int>>&);
-        virtual const std::vector<Point> specialEffect();
+        virtual const std::vector<Point> specialEffect(Point);
     private:
         
 };
