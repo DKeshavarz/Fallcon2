@@ -2,6 +2,9 @@
 
 #include <iostream>
 #include <string>
+#include <SFML/Graphics.hpp>
+#include <string>
+#include <vector>
 
 #ifdef _WIN32
     #include <conio.h>
