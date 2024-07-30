@@ -1,8 +1,12 @@
 #include "control.h"
 
 #include <iostream>
+#include <SFML/Graphics.hpp>
+#include <string>
+#include <vector>
 
 using namespace std;
+using namespace sf;
 
 Control::Control(){
 
