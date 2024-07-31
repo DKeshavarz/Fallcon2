@@ -1,5 +1,6 @@
 #include "point.h"
 #include "obstacle.h"
+#include "ai.h"
 
 #include <unordered_map>
 #include <vector>
@@ -28,6 +29,8 @@ class Spacecraft{
         Point location;
         const std::unordered_map<char,Point> moveOptions
         {{'a',{0,-1}} , {'d',{0,1}} , {'w',{-1,0}} , {'s',{1,0}}};
+
+        AI myAI ;
 
 };
 
