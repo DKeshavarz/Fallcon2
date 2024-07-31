@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+
 #include "ai.h"
 using namespace std;
 AI::AI(){
@@ -20,4 +21,8 @@ void AI::printMap(){
         }
         cout << '\n';
     }
+}
+
+char AI::suggest(std::vector<std::vector<bool>> exist, std::vector<std::vector<Obstacle*>> cells){
+    return 'w';
 }

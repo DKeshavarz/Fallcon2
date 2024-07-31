@@ -23,6 +23,8 @@ int Control::run(){
         ch = 'q';
         this->space.moveSpacecraftAI();
         //this->io.clear();
+        cout << '\n';
+        this->io.output(this->space.showMap());
         
         try{
             if(ch == ' '){

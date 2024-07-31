@@ -1,5 +1,7 @@
 #include <vector>
 
+#include "obstacle.h"
+
 #ifndef AI_H
 #define AI_H
 
@@ -8,6 +10,8 @@ class AI {
         AI();
         void setMap(int,int);
         const std::vector<std::vector<int>>& getMap()const;
+
+        char suggest(std::vector<std::vector<bool>> , std::vector<std::vector<Obstacle*>>);
 
         void printMap();
 

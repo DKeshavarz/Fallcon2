@@ -21,6 +21,7 @@ class Spacecraft{
         const std::unordered_map<char,Point>& getMoveOptions()const;
         const Point& getMoveToDir(char)const;
 
+        void moveTo(char);
         void moveTo(Point,const Obstacle* const);
         void useSpecialMove(const Obstacle* const);
 
