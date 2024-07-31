@@ -32,6 +32,7 @@ class Spacecraft{
         }
 
         void AImove(std::vector<std::vector<bool>> , std::vector<std::vector<Obstacle*>>);
+        void subEnergy();
 
     private:
         const int vision {1};

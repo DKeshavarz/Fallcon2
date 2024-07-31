@@ -51,12 +51,13 @@ void Spacecraft::useSpecialMove(const Obstacle* const obstacle){
     const vector<Point> movment {obstacle->specialEffect(this->getPoint())};
     this->setPoint(movment.back());
 }
-
 void Spacecraft::setAISize(int col ,int row){
     this->myAI.setMap(col,row);
 }
 
 void Spacecraft::AImove(vector<vector<bool>> exist , vector<vector<Obstacle*>> cells){
+    
+    subEnergy();
     this->myAI.update(this->location);
     char dir = this->myAI.suggest(exist,cells,this->location);
     this->myAI.printMap();
@@ -65,4 +66,10 @@ void Spacecraft::AImove(vector<vector<bool>> exist , vector<vector<Obstacle*>> c
 }
 void Spacecraft::moveTo(char input){
     this->setPoint(getPoint() + moveOptions.at(input));
+}
+
+void Spacecraft::subEnergy(){
+    this->energy--;
+    if(this->energy < 0)
+        throw invalid_argument("lack of energy");
 }

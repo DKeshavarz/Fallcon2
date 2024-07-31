@@ -1,4 +1,5 @@
 #include <vector>
+#include <stack>
 
 #include "obstacle.h"
 #include "point.h"
@@ -17,10 +18,11 @@ class AI {
         void printMap();
 
         void update(Point);
-        int  check (Point);
+        int  check (Point,Obstacle*);
 
     private:
         std::vector<std::vector<int>> map;
+        std::stack<char> design;
 };
 
 #endif // AI_H
