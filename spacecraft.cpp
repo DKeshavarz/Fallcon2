@@ -57,8 +57,11 @@ void Spacecraft::setAISize(int col ,int row){
 }
 
 void Spacecraft::AImove(vector<vector<bool>> exist , vector<vector<Obstacle*>> cells){
+    this->myAI.update(this->location);
     char dir = this->myAI.suggest(exist,cells);
+    this->myAI.printMap();
     this->moveTo(dir);
+    
 }
 void Spacecraft::moveTo(char input){
     this->setPoint(getPoint() + moveOptions.at(input));

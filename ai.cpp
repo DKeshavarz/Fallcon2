@@ -26,3 +26,16 @@ void AI::printMap(){
 char AI::suggest(std::vector<std::vector<bool>> exist, std::vector<std::vector<Obstacle*>> cells){
     return 'w';
 }
+
+void AI::update(Point curr){
+    int x = curr.getX();
+    int y = curr.getY();
+
+    for (int i {-1} ; i <= 1 ; i++){
+        for (int j {-1} ; j <= 1 ; j++){
+            if((i+x >= 0 and i+x < map.size()) and (j+y >= 0 and j+y < map.back().size())){
+                this->map[i+x][j+y] = 1;
+            }
+        }
+    }
+}
