@@ -55,3 +55,7 @@ void Spacecraft::useSpecialMove(const Obstacle* const obstacle){
 void Spacecraft::setAISize(int col ,int row){
     this->myAI.setMap(col,row);
 }
+
+void Spacecraft::AImove(vector<vector<bool>> exist , vector<vector<Obstacle*>> cells){
+    
+}

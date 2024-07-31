@@ -130,3 +130,27 @@ const Obstacle* const Space::getCell(const Point& point){
     
     return this->map.at(point.getX()).at(point.getY()).get();
 }
+
+void Space::moveSpacecraftAI(){
+    Spacecraft& mySpacecraft = this->spacecrafts.at(spacecraftIndex); // can be a function
+    const int vision = mySpacecraft.getVision();
+    vector<vector<bool>> exsis (2*vision+1,vector<bool> (2*vision+1 , false));
+    vector<vector<Obstacle*>> cells (2*vision+1,vector<Obstacle*> (2*vision+1 , nullptr));
+
+    cout << "Space::moveSpacecraftAI() create " << vision +1 << " matrix \n";
+    
+    for (int i {-vision} ; i <= vision ; i++){
+        for (int j {-vision} ; j <= vision; j++){
+            cout << " call " << mySpacecraft.getPoint() + Point{i,j} << ' ';
+            if (isOnMap(mySpacecraft.getPoint() + Point{i,j})) {
+                cout << "Ok " << i+1 << ' ' << j+1;
+                exsis[i+1][j+1] = true;
+                cells[i+1][j+1] = this->map[mySpacecraft.getPoint().getX()+i][mySpacecraft.getPoint().getY()+j].get();
+            }
+
+            cout << '\n';
+        }
+    }
+
+    mySpacecraft.AImove(exsis , cells);
+}

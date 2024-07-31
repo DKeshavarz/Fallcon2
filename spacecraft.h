@@ -26,7 +26,14 @@ class Spacecraft{
 
         void setAISize(int,int);
 
+        int getVision(){
+            return this->vision;
+        }
+
+        void AImove(std::vector<std::vector<bool>> , std::vector<std::vector<Obstacle*>>);
+
     private:
+        const int vision {1};
         int energy;
         Point location;
         const std::unordered_map<char,Point> moveOptions

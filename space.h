@@ -19,6 +19,7 @@ class Space{
         void specialMoveSpacecraft();
 
         void loadMap();
+        void moveSpacecraftAI();
 
     private:
         std::vector<std::vector<std::shared_ptr<Obstacle>>> map;

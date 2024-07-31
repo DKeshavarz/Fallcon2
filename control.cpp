@@ -1,8 +1,12 @@
 #include "control.h"
 
 #include <iostream>
+#include <chrono>
+#include <thread>
 
 using namespace std;
+
+const int holdTime = 1500;
 
 Control::Control(){
 
@@ -15,7 +19,9 @@ int Control::run(){
     char ch;
     do{
         this->io.output(this->space.showMap());
-        ch = this->io.input();
+        //std::this_thread::sleep_for(std::chrono::milliseconds(holdTime));
+        ch = 'q';
+        this->space.moveSpacecraftAI();
         //this->io.clear();
         
         try{
