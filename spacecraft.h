@@ -24,6 +24,8 @@ class Spacecraft{
         void moveTo(Point,const Obstacle* const);
         void useSpecialMove(const Obstacle* const);
 
+        void setAISize(int,int);
+
     private:
         int energy;
         Point location;

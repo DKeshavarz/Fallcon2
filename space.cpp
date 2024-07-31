@@ -75,8 +75,6 @@ void Space::loadMap(){
 
     int spacecraftX , spacecraftY , spacecraftEnergy;
     inputFile >> spacecraftX >> spacecraftY >> spacecraftEnergy;
-    Spacecraft spacecraft = Spacecraft(Point{spacecraftX,spacecraftY},spacecraftEnergy);
-    this->spacecrafts.push_back(spacecraft);
 
     vector<vector<int>> tmpMapHolder(mapRow,vector<int>(mapColumn,-1));
     for(int i {}; i < mapRow ; ++i){
@@ -84,6 +82,11 @@ void Space::loadMap(){
             inputFile >>tmpMapHolder[i][j] ;        
         }
     }
+
+    Spacecraft spacecraft = Spacecraft(Point{spacecraftX,spacecraftY},spacecraftEnergy);
+    spacecraft.setAISize(mapRow , mapColumn);
+    this->spacecrafts.push_back(spacecraft);
+
 
     addObstacle(tmpMapHolder);
 

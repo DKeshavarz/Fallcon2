@@ -7,7 +7,9 @@ class AI {
     public:
         AI();
         void setMap(int,int);
-        const std::vector<std::vector<int>>& getMap();
+        const std::vector<std::vector<int>>& getMap()const;
+
+        void printMap();
 
     private:
         std::vector<std::vector<int>> map;

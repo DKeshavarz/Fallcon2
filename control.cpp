@@ -16,7 +16,7 @@ int Control::run(){
     do{
         this->io.output(this->space.showMap());
         ch = this->io.input();
-        this->io.clear();
+        //this->io.clear();
         
         try{
             if(ch == ' '){

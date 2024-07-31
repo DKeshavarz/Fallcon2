@@ -51,3 +51,7 @@ void Spacecraft::useSpecialMove(const Obstacle* const obstacle){
     const vector<Point> movment {obstacle->specialEffect(this->getPoint())};
     this->setPoint(movment.back());
 }
+
+void Spacecraft::setAISize(int col ,int row){
+    this->myAI.setMap(col,row);
+}
