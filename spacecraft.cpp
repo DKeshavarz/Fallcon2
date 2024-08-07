@@ -52,7 +52,7 @@ void Spacecraft::useSpecialMove(const Obstacle* const obstacle){
     this->setPoint(movment.back());
 }
 void Spacecraft::setAISize(int col ,int row){
-    this->myAI.setMap(col,row);
+    this->myAI.setMap(col+1,row+1);
 }
 
 void Spacecraft::AImove(vector<vector<bool>> exist , vector<vector<Obstacle*>> cells){
@@ -60,7 +60,7 @@ void Spacecraft::AImove(vector<vector<bool>> exist , vector<vector<Obstacle*>> c
     subEnergy();
     this->myAI.update(this->location);
     char dir = this->myAI.suggest(exist,cells,this->location);
-    this->myAI.printMap();
+    //this->myAI.printMap();
     this->moveTo(dir);
     
 }
