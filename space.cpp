@@ -2,6 +2,7 @@
 #include "wormHole.h"
 #include "spaceCurrent.h"
 #include "spaceObject.h"
+#include "home.h"
 
 #include <iostream>
 #include <sstream>
@@ -105,6 +106,8 @@ void Space::addObstacle(vector<vector<int>> numericMap){
                 obstaclePtr = shared_ptr<Obstacle> (new SpaceObject());
             }else if(numericMap.at(i).at(j) == 2 or numericMap.at(i).at(j) == 1){
                 obstaclePtr = shared_ptr<Obstacle> (new SpaceCurrent());
+            }else if(numericMap.at(i).at(j) == 5){
+                obstaclePtr = shared_ptr<Obstacle> (new Home());
             }
             
             if(obstaclePtr){

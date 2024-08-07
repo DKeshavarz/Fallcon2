@@ -28,6 +28,9 @@ void AI::printMap(){
 char AI::suggest(std::vector<std::vector<bool>> exist, std::vector<std::vector<Obstacle*>> cells , Point loc){
     vector<pair<int,char>> dir;
     unordered_map <char,char> revers {{'a','d'} , {'d','a'} , {'w','s'} , {'s','w'}};
+    if(cells[1][1] != nullptr and cells[1][1] ->showCell(loc) == "5"){
+        throw invalid_argument("arrived");
+    }
 
     dir.push_back({check(loc+Point{0,-1},cells[1][0]),'a'});
     dir.push_back({check(loc+Point{0, 1},cells[1][2]),'d'});
@@ -67,6 +70,9 @@ int AI::check (Point loc , Obstacle* object){
 
     if(object != nullptr and !object->canCollision(loc))
         return -1;
+
+    if(object != nullptr and object->showCell(loc) == "5")
+        return 1e3;
 
     int tmp {};
     for (int i {-1} ; i <= 1 ; i++){
